@@ -12,7 +12,7 @@
 <body>
 
     <script>
-        const TIME_FOR_PAIR = 20;
+        const TIME_FOR_PAIR = 200;
         let items = document.querySelectorAll('.item');
         for (let i = 0; i < items.length; i++) {
             items[i].style.transitionDuration = TIME_FOR_PAIR / 1000 + 's';
@@ -20,7 +20,7 @@
         var itemHeight = [];
         var index1 = [];
         var index2 = [];
-        var amount = 100;
+        var amount = 30;
         var itemWidth;
     </script>
 
@@ -53,7 +53,7 @@
                     <form class="settings__form" action="">
                         <div class="form-item form-item-1">
                             <h2>Amount of items</h2>
-                            <input id="amount" type="text" value="100">
+                            <input id="amount" type="text" value="30">
                         </div>
                         <div class="submit-wrap">
                             <input type="submit" value="Apply" onclick="ApplySettings()">
