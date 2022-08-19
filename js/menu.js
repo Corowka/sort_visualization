@@ -21,7 +21,7 @@ function openVisPage() {
     clearSwaps();
     stopVis();
     refreash();
-    itemWidth = 80 / amount;
+    itemWidth = 90 / amount;
     for (let i = 0; i < amount; i++) {
         itemHeight[i] = Math.random() * 100;
         let item = document.createElement('div');
@@ -45,6 +45,10 @@ function runVis() {
     let pairNum = 0;
     visualisation = setInterval(function() {
         if (pairNum >= pairAmount) {
+            let item1 = document.getElementById('item-' + index1[pairNum - 1]);
+            let item2 = document.getElementById('item-' + index2[pairNum - 1]);
+            item1.style.boxShadow = "none";
+            item2.style.boxShadow = "none";
             showSwaps();
             stopVis();
         } else {
@@ -53,6 +57,13 @@ function runVis() {
             itemHeight[index2[pairNum]] = temp;
             let item1 = document.getElementById('item-' + index1[pairNum]);
             let item2 = document.getElementById('item-' + index2[pairNum]);
+            item1.style.boxShadow = "0 0 30px 3px rgba(0, 0, 0, 0.88) inset";
+            item2.style.boxShadow = "0 0 30px 3px rgba(0, 0, 0, 0.88) inset";
+            let prevPair = (pairNum > 0) ? pairNum - 1 : 0;
+            let prevItem1 = document.getElementById('item-' + index1[prevPair]);
+            let prevItem2 = document.getElementById('item-' + index2[prevPair]);
+            prevItem1.style.boxShadow = "none";
+            prevItem2.style.boxShadow = "none";
             item1.style.height = itemHeight[index1[pairNum]] + '%';
             item2.style.height = itemHeight[index2[pairNum]] + '%';
             ++pairNum;
@@ -111,11 +122,5 @@ function quickSortVis() {
         array[i] = itemHeight[i];
     }
     quickSort(array, 0, array.length - 1);
-    runVis();
-}
-
-function mergeSortVis() {
-    openVisPage();
-    mergeSortVis();
     runVis();
 }
